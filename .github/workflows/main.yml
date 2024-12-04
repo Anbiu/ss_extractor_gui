@@ -20,4 +20,6 @@ jobs:
       run: pip install pyinstaller
  
     - name: Build Executable
-      run: pyinstaller --onefile ss_extractor_gui.py
+      # run: pyinstaller --onefile ss_extractor_gui.py
+      
+      run: pyinstaller --onefile SS_Node_Extractor.spec
