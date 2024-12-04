@@ -1,13 +1,11 @@
-name: Run ss_extractor_gui
+name: Build Python Executable
  
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
  
 jobs:
-  run-ss-extractor-gui:
+  build:
     runs-on: ubuntu-latest
  
     steps:
@@ -18,9 +16,8 @@ jobs:
       with:
         python-version: 3.8
  
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install ss_extractor_gui
-    - name: Run ss_extractor_gui
-      run: ss_extractor_gui
+    - name: Install PyInstaller
+      run: pip install pyinstaller
+ 
+    - name: Build Executable
+      run: pyinstaller --onefile ss_extractor_gui.py
