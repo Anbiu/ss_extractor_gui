@@ -1,20 +1,26 @@
-name: Execute SS Node Extractor
+name: Run ss_extractor_gui
  
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
  
 jobs:
-  build:
+  run-ss-extractor-gui:
     runs-on: ubuntu-latest
  
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
  
-    - name: Execute SS_Node_Extractor.spec
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+ 
+    - name: Install dependencies
       run: |
-        set -e
-        # 替换下面的命令为实际运行SS_Node_Extractor.spec的命令
-        SS_Node_Extractor.spec
+        python -m pip install --upgrade pip
+        pip install ss_extractor_gui
+    - name: Run ss_extractor_gui
+      run: ss_extractor_gui
