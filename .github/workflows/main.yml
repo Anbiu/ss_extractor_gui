@@ -1,26 +1,20 @@
-name: Python Testing
+name: Execute SS Node Extractor
  
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main
  
 jobs:
   build:
     runs-on: ubuntu-latest
  
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout Code
+      uses: actions/checkout@v2
  
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
- 
-    # - name: Install dependencies
-    #   run: |
-    #     python -m pip install --upgrade pip
-    #     pip install tox
-    - name: run ss_extractor_gui
-      run: ./ss_extractor_gui.py
+    - name: Execute SS_Node_Extractor.spec
+      run: |
+        set -e
+        # 替换下面的命令为实际运行SS_Node_Extractor.spec的命令
+        SS_Node_Extractor.spec
